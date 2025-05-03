@@ -19,8 +19,10 @@ const App: React.FC = () => {
   const [discountAmount, setDiscountAmount] = useState(0);
   const [vatAmount, setVatAmount] = useState(0);
 
-  const [customerName, setCustomerName] = useState('N/A');
-  const [customerDiscount, setCustomerDiscount] = useState('Not found');
+  // const [customerName, setCustomerName] = useState('N/A');
+  // const [customerDiscount, setCustomerDiscount] = useState('Not found');
+  const customerName = 'N/A';
+  const customerDiscount = 'Not found';
 
   const [products, setProducts] = useState<Product[]>([]);
   const [mrp, setMrp] = useState(0);
@@ -32,12 +34,12 @@ const App: React.FC = () => {
   const [change, setChange] = useState(0);
 
   const [salesPersonOptions, setSalesPersonOptions] = useState<Employee[]>([]);
-  const [loadingSalesPerson, setLoadingSalesPerson] = useState(true);
+  // const [loadingSalesPerson, setLoadingSalesPerson] = useState(true);
 
   const [paymentMethodOptions, setPaymentMethodOptions] = useState<PaymentMethod[]>([]);
-  const [loadingPaymentMethods, setLoadingPaymentMethods] = useState(true);
+  // const [loadingPaymentMethods, setLoadingPaymentMethods] = useState(true);
 
-  const [loadingProductSearch, setLoadingProductSearch] = useState(false);
+  // const [loadingProductSearch, setLoadingProductSearch] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
 
@@ -76,10 +78,10 @@ const App: React.FC = () => {
         const data = await response.json();
         // console.log(data);
         setSalesPersonOptions(data.data);
-        setLoadingSalesPerson(false);
+        // setLoadingSalesPerson(false);
       } catch (error: any) {
         handleError(error.message);
-        setLoadingSalesPerson(false);
+        // setLoadingSalesPerson(false);
       }
     };
 
@@ -100,10 +102,10 @@ const App: React.FC = () => {
         const data = await response.json();
         // console.log(data);
         setPaymentMethodOptions(data.data);
-        setLoadingPaymentMethods(false);
+        // setLoadingPaymentMethods(false);
       } catch (error: any) {
         handleError(error.message);
-        setLoadingPaymentMethods(false);
+        // setLoadingPaymentMethods(false);
       }
     };
 
@@ -127,7 +129,7 @@ const App: React.FC = () => {
   };
 
   const fetchProductBySku = async (sku: string) => {
-    setLoadingProductSearch(true);
+    // setLoadingProductSearch(true);
     try {
       // Check if SKU already exists in any product
       const skuExists = products.some(p =>
@@ -200,7 +202,7 @@ const App: React.FC = () => {
     } catch (error: any) {
       handleError(error.message);
     } finally {
-      setLoadingProductSearch(false);
+      // setLoadingProductSearch(false);
       setProductBarcode('');
     }
   };
